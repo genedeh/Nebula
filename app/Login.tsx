@@ -3,6 +3,7 @@ import ScreenWrapper from '@/components/ScreenWrapper';
 import BackButton from '@/components/ui/BackButton';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import { supabase } from '@/lib/supabase';
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import { Alert, StatusBar, Text, TouchableOpacity, View } from 'react-native';
@@ -18,6 +19,15 @@ const Login = () => {
             Alert.alert('Login', "Please fill all the fields!")
             return;
         }
+        setLoading(true);
+        const { error } = await supabase.auth.signInWithPassword({
+            email: emailRef.current.trim(),
+            password: passwordRef.current.trim()
+
+        })
+        setLoading(false);
+        if (error) Alert.alert('Login', error.message)
+
     }
 
     return (
