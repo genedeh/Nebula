@@ -19,7 +19,7 @@ const Button =
                 className={`bg-primary h-16 justify-center items-center rounded-3xl ${buttonStyle} ${hasShadow && shadowStyle}`}
                 style={{ borderCurve: 'continuous' }}
             >
-                <Text className={`text-2xl text-white font-extrabold${textStyle}`}>{title}</Text>
+                <Text className={`text-2xl text-white font-extrabold ${textStyle}`}>{title}</Text>
             </TouchableOpacity>
         )
     }
