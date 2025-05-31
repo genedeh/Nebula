@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const setUserData = (userData: Partial<User>) => {
         //@ts-ignore
-        setUser({ ...userData });
+        setUser({ ...userData , email: user.email});
     };
 
     return (
