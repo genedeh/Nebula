@@ -21,9 +21,10 @@ const RootLayout = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
+        // @ts-ignore
         setAuth(session?.user)
-        userUpdateData(session?.user)
-        router.replace('/home');
+        userUpdateData(session?.user, session?.user.email)
+        router.replace('/(main)/home');
       } else {
         // @ts-ignore
         setAuth(null);
@@ -31,10 +32,10 @@ const RootLayout = () => {
       }
     })
   }, []);
-  const userUpdateData = async (user: User) => {
+  const userUpdateData = async (user: User, email: string | undefined) => {
     const response = await getUserData(user?.id);
     if (response.success) {
-      setUserData(response?.data)
+      setUserData({ ...response?.data, email })
     }
   }
   return <Stack

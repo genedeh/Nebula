@@ -2,20 +2,14 @@ import Icon from '@/assets/icons'
 import ScreenWrapper from '@/components/ScreenWrapper'
 import Avatar from '@/components/ui/Avatar'
 import { useAuth } from '@/contexts/AuthContext'
-import { supabase } from '@/lib/supabase'
 import { useRouter } from 'expo-router'
 import React from 'react'
-import { Alert, Button, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 const home = () => {
     const { user } = useAuth();
     const router = useRouter();
-    const onLogout = async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) {
-            Alert.alert('Logout', "Error signing out!")
-        }
-    }
+
     return (
         <ScreenWrapper>
             <View className='flex-row items-center justify-between mb-[10px] mx-[4%]'>
@@ -35,8 +29,6 @@ const home = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-
-            <Button title='logout' onPress={() => onLogout()} />
         </ScreenWrapper>
     )
 }
