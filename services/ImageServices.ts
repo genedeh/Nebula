@@ -1,5 +1,5 @@
 export const getUserProfilePictureSource = (
-  profile_picture_path: string | null
+  profile_picture_path: string | null | undefined
 ) => {
   if (profile_picture_path) {
     return { uri: profile_picture_path };

@@ -1,5 +1,16 @@
-import { User } from "@supabase/supabase-js";
 import { createContext, ReactNode, useContext, useState } from "react";
+
+export interface User{
+    username: string;
+    email: string;
+    followers: number;
+    total_likes: number;
+    address: string | null;
+    bio: string | null;
+    profile_picture: string | null | undefined;
+    phone_number: string | null;
+}
+
 
 interface AuthContextType {
     user: User | null;
@@ -18,7 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const setUserData = (userData: Partial<User>) => {
         //@ts-ignore
-        setUser({ ...userData , email: user.email});
+        setUser({ ...userData});
     };
 
     return (

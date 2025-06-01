@@ -1,15 +1,24 @@
 import { getUserProfilePictureSource } from '@/services/ImageServices';
 import { Image } from "react-native";
+import { Dimensions } from 'react-native';
 import React from 'react';
 
-const Avatar = ({ uri, size = '12', style = '' }: { uri: string, size?: string, style?: string }) => {
+const { width: screenWidth } = Dimensions.get('window');
+
+
+const Avatar = ({ uri, size = 9.3, style = '' }: { uri: string | null | undefined, size?: number, style?: string }) => {
+    const imageSize = screenWidth * (size / 100); 
     return (
         <Image
             source={getUserProfilePictureSource(uri)}
-            className={`border-darkLight border-1 h-${size} w-${size} rounded-lg bg-textDark/50`}
+            className={`border-darkLight border-1  rounded-full bg-textDark/50`}
             resizeMode="cover" 
-            //   @ts-ignore
-            style={{ borderCurve: 'continuous' }}
+            style={{
+                width: imageSize,
+                height: imageSize,
+                // @ts-ignore
+                borderCurve: 'continuous',
+            }}
         />
     )
 }
