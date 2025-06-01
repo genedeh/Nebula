@@ -6,7 +6,7 @@ export interface User{
     email: string;
     followers: number;
     total_likes: number;
-    address: string | null;
+    location: string | null;
     bio: string | null;
     profile_picture: string | null | undefined;
     phone_number: string | null;

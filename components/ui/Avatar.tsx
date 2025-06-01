@@ -1,5 +1,5 @@
 import { getUserProfilePictureSource } from '@/services/ImageServices';
-import { Image } from "react-native";
+import { Image } from "expo-image";
 import { Dimensions } from 'react-native';
 import React from 'react';
 
@@ -12,7 +12,7 @@ const Avatar = ({ uri, size = 9.3, style = '' }: { uri: string | null | undefine
         <Image
             source={getUserProfilePictureSource(uri)}
             className={`border-darkLight border-1  rounded-full bg-textDark/50`}
-            resizeMode="cover" 
+            transition={100}
             style={{
                 width: imageSize,
                 height: imageSize,

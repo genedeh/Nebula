@@ -10,7 +10,7 @@ import { Alert, Text, TouchableOpacity, View } from 'react-native'
 
 
 const profile = () => {
-    const { user, setAuth } = useAuth();
+    const { user } = useAuth();
     const router = useRouter();
     const onLogout = async () => {
         const { error } = await supabase.auth.signOut();
@@ -43,7 +43,6 @@ const UserHeader = ({ user, router, handleLogout }: { user: User | null, router:
         { label: 'Posts', value: 'N/A' },
         { label: 'Likes', value: user?.total_likes || '0' },
     ];
-    console.log(user)
     return (
         <View className="flex-1 bg-white px-[4%]">
             <View>
@@ -55,7 +54,7 @@ const UserHeader = ({ user, router, handleLogout }: { user: User | null, router:
             <View className="relative items-center justify-center">
                 {/* Profile Picture */}
                 <Avatar uri={user?.profile_picture} size={45} />
-                <TouchableOpacity className="absolute bottom-0 right-safe-offset-28 bg-white p-2 rounded-full shadow-md elevation-5">
+                <TouchableOpacity className="absolute bottom-0 right-safe-offset-28 bg-white p-2 rounded-full shadow-md elevation-5" onPress={() => { router.push('/(main)/editProfile') }}>
                     <Icon name="edit" size={18} color="#000" />
                 </TouchableOpacity>
             </View>
@@ -63,7 +62,7 @@ const UserHeader = ({ user, router, handleLogout }: { user: User | null, router:
             <View className="items-center my-3">
                 <Text className="text-2xl font-bold text-black">{user?.username || 'N/A'}</Text>
                 <Text className="text-sm text-gray-500">{user?.email || 'N/A'}</Text>
-                <Text className="text-xs text-gray-400"> {user?.address || 'N/A'}</Text>
+                <Text className="text-xs text-gray-400"> {user?.location || 'N/A'}</Text>
 
             </View>
             {/* Stats Row */}

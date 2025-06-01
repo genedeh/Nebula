@@ -19,11 +19,11 @@ const RootLayout = () => {
   // @ts-ignore
   const { setAuth, setUserData } = useAuth();
   useEffect(() => {
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session) {
         // @ts-ignore
         setAuth(session?.user)
-        userUpdateData(session?.user, session?.user.email)
+        await userUpdateData(session?.user, session?.user.email)
         router.replace('/(main)/home');
       } else {
         // @ts-ignore
