@@ -51,9 +51,9 @@ const UserHeader = ({ user, router, handleLogout }: { user: User | null, router:
                     <Icon name={'logout'} color='#FF5D8F' />
                 </TouchableOpacity>
             </View>
-            <View className="relative items-center justify-center">
+            <View className="relative items-center justify-center mt-5">
                 {/* Profile Picture */}
-                <Avatar uri={user?.profile_picture} size={45} />
+                <Avatar uri={user?.profile_picture} size={35} />
                 <TouchableOpacity className="absolute bottom-0 right-safe-offset-28 bg-white p-2 rounded-full shadow-md elevation-5" onPress={() => { router.push('/(main)/editProfile') }}>
                     <Icon name="edit" size={18} color="#000" />
                 </TouchableOpacity>

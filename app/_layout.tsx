@@ -23,7 +23,7 @@ const RootLayout = () => {
       if (session) {
         // @ts-ignore
         setAuth(session?.user)
-        await userUpdateData(session?.user, session?.user.email)
+        userUpdateData(session?.user, session?.user.email)
         router.replace('/(main)/home');
       } else {
         // @ts-ignore

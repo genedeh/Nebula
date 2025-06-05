@@ -25,7 +25,7 @@ const home = () => {
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => { router.push('/(main)/profile') }}>
                         {/* @ts-ignore */}
-                        <Avatar uri={user?.profile_picture} rounded='sm' />
+                        <Avatar uri={user?.profile_picture} rounded='lg' />
                     </TouchableOpacity>
                 </View>
             </View>
